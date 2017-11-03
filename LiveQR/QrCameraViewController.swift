@@ -14,11 +14,14 @@ import UIKit
 class QrCameraViewController : ViewController {
     @IBOutlet weak var qrCamView: UIView!
 
+    @IBOutlet weak var QrCodeLabel: UILabel!
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "session queue")
     
     private let metadataOutput = AVCaptureMetadataOutput()
     private let scannerQueue = DispatchQueue(label: "QR code scanner queue")
+    
+    private var detectedQrCode = ""
     
     private enum SessionSetupResult {
         case success
@@ -138,7 +141,13 @@ extension QrCameraViewController : AVCaptureMetadataOutputObjectsDelegate {
                 
                 guard let qrCodeObject = qrCamLayer?.transformedMetadataObject(for: codeMetadata) as? AVMetadataMachineReadableCodeObject else { continue }
                 let qrCode = qrCodeObject.stringValue
-                print("The QR code is \(String(describing: qrCode))")
+                if qrCode != detectedQrCode {
+                    print("The QR code is \(String(describing: qrCode))")
+                    DispatchQueue.main.async {
+                        self.QrCodeLabel.text = qrCode
+                    }
+                }
+                
             }
         }
     }

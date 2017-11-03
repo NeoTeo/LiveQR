@@ -45,29 +45,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOF-RN-RIY" userLabel="QRCameraView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOF-RN-RIY" userLabel="QRCameraView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code detected." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-H8-1GY">
+                                        <rect key="frame" x="30" y="20" width="315" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                        <color key="textColor" white="0.024956597222222224" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yL5-H8-1GY" firstAttribute="leading" secondItem="YOF-RN-RIY" secondAttribute="leading" constant="30" id="An2-me-gWy"/>
+                                    <constraint firstItem="yL5-H8-1GY" firstAttribute="centerX" secondItem="YOF-RN-RIY" secondAttribute="centerX" id="vaz-uN-vNG"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="arse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-H8-1GY">
-                                <rect key="frame" x="166" y="98" width="33" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jJr-5j-tL4" firstAttribute="top" secondItem="yL5-H8-1GY" secondAttribute="bottom" constant="-21" id="3HP-Om-4Os"/>
+                            <constraint firstItem="YOF-RN-RIY" firstAttribute="top" secondItem="AiO-Vz-ovz" secondAttribute="top" id="5lS-Qn-NjU"/>
+                            <constraint firstItem="YOF-RN-RIY" firstAttribute="leading" secondItem="AiO-Vz-ovz" secondAttribute="leading" id="Jvm-1H-dys"/>
+                            <constraint firstAttribute="trailing" secondItem="YOF-RN-RIY" secondAttribute="trailing" id="V4r-Er-GYU"/>
+                            <constraint firstItem="YOF-RN-RIY" firstAttribute="bottom" secondItem="jJr-5j-tL4" secondAttribute="bottom" id="WbL-iJ-dei"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jJr-5j-tL4"/>
                     </view>
                     <connections>
+                        <outlet property="QrCodeLabel" destination="yL5-H8-1GY" id="Bub-9g-Aqb"/>
                         <outlet property="qrCamView" destination="YOF-RN-RIY" id="1QG-SA-1Cp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZ2-5B-vKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941.60000000000002" y="140.77961019490255"/>
+            <point key="canvasLocation" x="941.60000000000002" y="139.880059970015"/>
         </scene>
     </scenes>
 </document>
