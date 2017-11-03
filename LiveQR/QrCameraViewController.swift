@@ -128,8 +128,19 @@ class QrCameraViewController : ViewController {
 }
 
 extension QrCameraViewController : AVCaptureMetadataOutputObjectsDelegate {
+    
+    // Called when the camera recognizes a barcode.
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        print("arses")
+        //var sensorId: String?
+        let supportedBarcodeTypes = [AVMetadataObject.ObjectType.qr]
+        for codeMetadata in metadataObjects {
+            if supportedBarcodeTypes.contains(codeMetadata.type) {
+                
+                guard let qrCodeObject = qrCamLayer?.transformedMetadataObject(for: codeMetadata) as? AVMetadataMachineReadableCodeObject else { continue }
+                let qrCode = qrCodeObject.stringValue
+                print("The QR code is \(String(describing: qrCode))")
+            }
+        }
     }
 }
 /*
